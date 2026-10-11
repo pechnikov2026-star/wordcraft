@@ -184,13 +184,13 @@ fn home_page(app: &mut WordApp, ui: &mut Ui) {
     let hour = wordcraft_engine::cmd::now_iso().get(11..13).and_then(|h| h.parse::<u32>().ok()).unwrap_or(9);
     heading(
         ui,
-        if hour < 12 {
+        crate::i18n::t(if hour < 12 {
             "Good morning"
         } else if hour < 18 {
             "Good afternoon"
         } else {
             "Good evening"
-        },
+        }),
     );
     ui.horizontal(|ui| {
         ui.spacing_mut().item_spacing = vec2(18.0, 0.0);
